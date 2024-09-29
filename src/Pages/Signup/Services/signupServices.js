@@ -7,12 +7,11 @@ const { REGISTER } = APIEndPoints;
 const authRegister = createAsyncThunk('auth/registration', async (payload) => {
     try {
         const response = await postReq(REGISTER, payload);
-        console.log("first", response)
-        if (response.status >= 400) {
+        if (response.status >= 400) { // Successfull
             return response.response.data
         }
 
-        return response?.data;
+        return response?.data; // Failed
     } catch (err) {
         console.log(">>>>>ERROR Ser-->>>>>", err)
     }
