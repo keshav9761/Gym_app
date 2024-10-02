@@ -5,16 +5,17 @@ import APIEndPoints from './apiEndpoints'
 const { REGISTER } = APIEndPoints;
 
 const authRegister = createAsyncThunk('auth/registration', async (payload) => {
-    try {
+    // try {
+        console.log("first", payload)
         const response = await postReq(REGISTER, payload);
-        console.log("first", response)
-        if (response.status >= 400) {
+        // if (response.status >= 400) {
+        console.log("RRRRRRR>>",response)
             return response.response.data
-        }
+        // }
 
-        return response?.data;
-    } catch (err) {
-        console.log(">>>>>ERROR Ser-->>>>>", err)
-    }
+    //     return response?.data;
+    // } catch (err) {
+    //     console.log(">>>>>ERROR Ser-->>>>>", err)
+    // }
 })
 export default { authRegister };

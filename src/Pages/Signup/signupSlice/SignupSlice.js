@@ -17,9 +17,8 @@ const signupSlice = createSlice({
                 state.isLoader = true;
             })
             .addCase(authRegister.fulfilled, (state, action) => {
-                const { payload } = action;
+                const { payload } = action || {};
                 state.isLoader = false;
-                console.log("-----slice-----", payload)
                 state.data = payload;
             })
             .addCase(authRegister.rejected, (state, action) => {

@@ -15,6 +15,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Signup from './src/Pages/Signup/SignupScreen';
 import Login from './src/Pages/Login/Login';
 import ForgetPwd from './src/Pages/ForgetPwd/ForgetPwd';
+import OfferSscreen from './src/Pages/Offers/OfferSscreen';
 
 function App(): React.JSX.Element {
   // console.log(">>>>>>>>>")
@@ -30,6 +31,7 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="ForgetPwd" component={ForgetPwd} />
+        <Stack.Screen name="OfferSscreen" component={OfferSscreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

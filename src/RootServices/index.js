@@ -2,34 +2,23 @@ import axios from "axios";
 const BASEURL = 'https://gym-qjfy.onrender.com'
 
 
-const initializeInterceptors = () => {
-    // Request Interceptor
-    axios.interceptors.request.use((req) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            req.headers.Authorization = `Bearer ${token}`;
-        }
-        return req;
-    }, (error) => {
-        // Handle request errors
-        return Promise.reject(error);
-    });
 
-    // Response Interceptor
-    axios.interceptors.response.use((res) => {
-        return res;
-    }, (error) => {
-        if (error.response && error.response.status === 403) {
-            if (localStorage.getItem('token')) {
-                window.location.href = '/dashboard';
-            } else {
-                window.location.href = '/';
-            }
-        }
-        // Handle other response errors
-        return Promise.reject(error);
-    });
-};
+// const initializeInterceptors = () => {
+//     // Request Interceptor
+//     axios.interceptors.request.use((req) => {
+//         const token = localStorage.getItem('token');
+//         if (token) {
+//             req.headers.Authorization = `Bearer ${token}`;
+//         }
+//         return req;
+// });
+
+//     // Response Interceptor
+//     axios.interceptors.response.use((res) => {
+//         console.log("+===== interCepter",res)
+//         return res;
+//     });
+// };
 
 // initializeInterceptors()
 

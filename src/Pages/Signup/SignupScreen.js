@@ -11,17 +11,16 @@ function Signup() {
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state?.signup)
     const [value, setValues] = useState({
-        username: '',
         email: '',
-        password: '',
+        mobile: '',
     })
 
     const handleTextInput = (name, value) => {
         setValues((pre) => ({ ...pre, [name]: value }))
     }
     const handleSubmit = () => {
-        dispatch(signupServices?.authRegister(value))
         console.log('>>>>>>>>value---', value)
+        dispatch(signupServices?.authRegister(value))
 
     }
     useEffect(() => {
@@ -61,7 +60,7 @@ function Signup() {
                             mode='outlined'
                             // secureTextEntry={true}
                             name='mobile'
-                            value={value.mobile}
+                            value={value?.mobile}
                             onChangeText={(value) => { handleTextInput('mobile', value) }}
                         />
                         <Button
