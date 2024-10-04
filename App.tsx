@@ -16,6 +16,7 @@ import Signup from './src/Pages/Signup/SignupScreen';
 import Login from './src/Pages/Login/Login';
 import ForgetPwd from './src/Pages/ForgetPwd/ForgetPwd';
 import OfferSscreen from './src/Pages/Offers/OfferSscreen';
+import SplashScreen from './src/Pages/SplashScreen/SplashScreen';
 
 function App(): React.JSX.Element {
   // console.log(">>>>>>>>>")
@@ -27,11 +28,12 @@ function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login'>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="ForgetPwd" component={ForgetPwd} />
-        <Stack.Screen name="OfferSscreen" component={OfferSscreen} />
+      <Stack.Navigator initialRouteName="splsh">
+        <Stack.Screen name="splsh" component={SplashScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgetPwd" component={ForgetPwd} options={{ headerShown: false }} />
+        <Stack.Screen name="OfferSscreen" component={OfferSscreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

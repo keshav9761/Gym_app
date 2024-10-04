@@ -1,3 +1,3 @@
 export default {
-    REGISTER: '/auth/registration'
+    REGISTER: '/auth/registration' 
 }

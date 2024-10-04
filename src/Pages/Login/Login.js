@@ -1,17 +1,30 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Button, Card, TextInput, Title } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
+import Services from '../Login/Services/loginServices'
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Login() {
     const navigate = useNavigation();
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state.login.data)
+    console.log("====STATE ===", state)
     const [loginValue, setLoginValue] = useState();
+
+    useEffect(() => {
+        if (!state?.data?.token) return;
+        AsyncStorage.setItem('token', state.data.token)
+    }, [state?.data?.token])
 
     const handleTextInput = (name, value) => {
         setLoginValue((pre) => ({ ...pre, [name]: value }));
     }
     const handleSubmit = () => {
-        console.log(loginValue)
+        console.log("ligib values", loginValue)
+        dispatch(Services.authLogin(loginValue))
+
     }
     return (
         <View style={styles.container}>

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 function Signup() {
-    const navigate = useNavigation();
+    const navigate = useNavigation();  
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state?.signup)
     const [value, setValues] = useState({
