@@ -9,7 +9,10 @@ import store from './src/Redux/store';
 import { PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
 
-function Main (){
+function Main() {
+    if (__DEV__) {
+        require("./ReactotronConfig");
+    }
     return (
         <Provider store={store}>
             <PaperProvider>
