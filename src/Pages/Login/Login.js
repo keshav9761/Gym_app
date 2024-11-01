@@ -5,6 +5,7 @@ import { Button, Card, TextInput, Title } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import Services from '../Login/Services/loginServices'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 function Login() {
     const navigate = useNavigation();
@@ -15,7 +16,7 @@ function Login() {
 
     useEffect(() => {
         if (!state?.data?.token) return;
-        AsyncStorage.setItem('token', state.data.token)
+        AsyncStorage.setItem('token', state?.data?.token)
     }, [state?.data?.token])
 
     const handleTextInput = (name, value) => {
@@ -23,8 +24,8 @@ function Login() {
     }
     const handleSubmit = () => {
         console.log("ligib values", loginValue)
-        dispatch(Services.authLogin(loginValue))
-
+        // dispatch(Services.authLogin(loginValue))
+        navigate.navigate('dashboard')
     }
     return (
         <View style={styles.container}>
@@ -49,6 +50,7 @@ function Login() {
                         value={loginValue?.password}
                         onChangeText={(text) => handleTextInput('Password', text)}
                     />
+
                     <Pressable onPress={() => navigate.navigate('ForgetPwd')} style={styles.textAlign}>
                         <Text style={{ color: 'blue' }}>Forget Password ?</Text>
                     </Pressable>

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import apiEndpoints from "./apiEndpoints";
 import { postReq } from "../../../RootServices";
-
+ 
 const { LOGIN } = apiEndpoints;
 
 const authLogin = createAsyncThunk('login', async (payload) => {

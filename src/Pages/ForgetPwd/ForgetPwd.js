@@ -3,8 +3,12 @@ import { View } from 'react-native'
 import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, Pressable } from "react-native";
 import { Button, Card, TextInput, Title } from "react-native-paper";
+import Services from './Services/ForgetServices'
+import { useSelector, useDispatch } from "react-redux";
+
 
 function ForgetPwd() {
+    const dispatch = useDispatch();
     const navigate = useNavigation();
     const [PwdValue, setPwdValue] = useState();
 
@@ -12,8 +16,10 @@ function ForgetPwd() {
         setPwdValue((pre) => ({ ...pre, [name]: value }));
     }
     const handleSubmit = () => {
-        console.log(PwdValue)
+        dispatch(Services.forgetPWd(PwdValue))
+        console.log("FORGET----------->>",PwdValue)
     }
+
     return (
         <View style={styles.container}>
             <Card style={styles.card}>
@@ -34,8 +40,11 @@ function ForgetPwd() {
                         labelStyle={styles.buttonText}
                         onPress={handleSubmit}
                     >
-                        Go to Mail
+                        Go To Your Register Mail
                     </Button>
+                    <Pressable onPress={() => navigate.navigate('Login')}>
+                        <Text style={{ textAlign: 'center' ,color:'blue'}}>Try again for Login </Text>
+                    </Pressable>
                 </Card.Content>
             </Card>
         </View>
